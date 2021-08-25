@@ -17,7 +17,7 @@ videosId = []
 
 
 def getVideoList(maxresults=50, pagetoken=None):
-    needed_date = (datetime.datetime.now() - datetime.timedelta(days=100)).isoformat('T') + 'Z'
+    needed_date = (datetime.datetime.now() - datetime.timedelta(days=31)).isoformat('T') + 'Z'
     request = youtube.search().list(
         part='id',
         type='video',
