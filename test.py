@@ -16,21 +16,6 @@ youtube = build('youtube', 'v3', developerKey=api_key)
 videosId = []
 
 
-def getVideoList(maxresults=50, pagetoken=None):
-    needed_date = (datetime.datetime.now() - datetime.timedelta(days=31)).isoformat('T') + 'Z'
-    request = youtube.search().list(
-        part='id',
-        type='video',
-        channelId=channel_id,
-        publishedAfter=needed_date,
-        order='date',
-        maxResults=maxresults,
-        pageToken=pagetoken  # pageToken='CAoQAA'
-    )
-    response = request.execute()  # json.loads(request.execute())
-    return response
-
-
 def getVideoIds(request):
     for video in request['items']:
         videosId.append(video['id']['videoId'])
@@ -52,6 +37,25 @@ def getVideosStatistic(full_video_ids):  # takes list with video ID`s
         start_id += 50
         stop_id += 50
     return result
+
+
+def getVideoList(maxresults=50, pagetoken=None):
+    needed_date = (datetime.datetime.now() - datetime.timedelta(days=31)).isoformat('T') + 'Z'
+    #date_from = '2021-07-01T00:00:00Z'
+    #date_end = '2021-07-31T00:00:00Z'
+    request = youtube.search().list(
+        part='id',
+        type='video',
+        channelId=channel_id,
+        publishedAfter=needed_date,
+        #publishedAfter=date_from,
+        #publishedBefore=date_end,
+        order='date',
+        maxResults=maxresults,
+        pageToken=pagetoken  # pageToken='CAoQAA'
+    )
+    response = request.execute()  # json.loads(request.execute())
+    return response
 
 
 def start():
@@ -91,4 +95,4 @@ list_with_statistic = show_result(statistic)
 with open('test.txt', 'w') as file:
     file.write(json.dumps(list_with_statistic, ensure_ascii=False))
 
-import ipdb; ipdb.set_trace()
+import ipdb;ipdb.set_trace()
