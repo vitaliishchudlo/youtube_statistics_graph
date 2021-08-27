@@ -1,5 +1,8 @@
 **/venv
 **/.idea
-**/idea
+.idea
 .env
 **/__pycache__
+test.txt
+test2.txt
+
