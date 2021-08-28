@@ -1,27 +1,5 @@
 import matplotlib.pyplot as plt
 
-# data_list = [
-#     {
-#         "title": "Украина — Англия. Обзор матча / Прыгнуть выше головы не смогли",
-#         "viewsCount": "132870",
-#     },
-#     {
-#         "title": "Львів - шахтар. Виїздна серія",
-#         "viewsCount": "41242",
-#     },
-#     {
-#         "title": "Залужани - Барселона. Рік два. Студія після матчу",
-#         "viewsCount": "341516",
-#     }
-# ]
-
-# x = [
-#     'Львів - шахтар. Виїздна серія',
-#     'Украина — Англия. Обзор матча / Прыгнуть выше головы не смогли',
-#     'Залужани - Барселона. Рік два. Студія після матчу'
-# ]
-# y = [1323, 5142, 2681]
-
 
 plt.title("ТОП 10 відео по переглядам (в період 1-31липня)", fontsize=14, fontweight='bold', color='red')
 plt.xlabel('X labels')
@@ -77,7 +55,6 @@ plt.legend([label_x, label_x1, label_x2, label_x3, label_x4, label_x5, label_x6,
 # plt.grid()
 # plt.show()
 
-
 data_list = [
     {
         "title": "пятый",
@@ -111,13 +88,7 @@ for dic in data_list:
     dic['likesCount'] = int(dic['likesCount'])
 
 
-
-
-
 def get_data(x):
     return x['viewsCount']
 
 result = sorted(data_list, key=get_data, reverse=True)
-
-#more_viewed = sorted(data_list, key=itemgetter('viewsCount'))
-import ipdb;ipdb.set_trace()

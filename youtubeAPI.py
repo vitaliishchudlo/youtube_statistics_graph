@@ -1,3 +1,5 @@
+from math import ceil
+
 from googleapiclient.discovery import build
 
 from config import API_KEY
@@ -35,14 +37,18 @@ def searchVideosIdByIdChannel(channel_id, published_after, published_before, pag
     return response
 
 
-#
-# def getAllVideosByPeriod():
-#    request = youtube.search().list(
-#        part='id',
-#        type='video',
-#        channelId=channel_id,
-#        publishedAfter=needed_date,
-#        order='date',
-#        maxResults=maxresults,
-#        pageToken=pagetoken  # pageToken='CAoQAA'
-#    )
+def getVideosStatistic(list_of_id_videos):  # takes list with video ID`s
+    start_id = 0
+    stop_id = 50
+    result = []
+    for video in range(ceil(len(list_of_id_videos) / 50)):
+        part_ids = list_of_id_videos[start_id:stop_id]
+        part_ids = ','.join(part_ids)
+        request = youtube.videos().list(
+            part='snippet,statistics',
+            id=part_ids,
+        )
+        result.append(request.execute())
+        start_id += 50
+        stop_id += 50
+    return result

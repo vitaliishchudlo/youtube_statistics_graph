@@ -69,6 +69,7 @@ def start():
 
 
 start()
+
 statistic = getVideosStatistic(videosId)
 statistic_json = json.dumps(statistic, ensure_ascii=False)
 

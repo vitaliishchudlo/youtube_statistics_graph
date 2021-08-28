@@ -24,3 +24,21 @@ def get_list_id_videos(channel_id):
     except Exception:
         extract_id_videos(response)
     return list_with_all_id_videos
+
+
+def get_formatted_data(unFormattedData):
+    result = []
+    for x in unFormattedData:
+        for video in x['items']:
+            videos_result = {}
+            videos_result['title'] = video['snippet']['title']
+            videos_result['publishedAt'] = video['snippet']['publishedAt']
+            videos_result['viewCount'] = video['statistics']['viewCount']
+            videos_result['likeCount'] = video['statistics']['likeCount']
+            videos_result['dislikeCount'] = video['statistics']['dislikeCount']
+            videos_result['commentCount'] = video['statistics']['commentCount']
+            videos_result['link'] = f'https://www.youtube.com/watch?v={video["id"]}'
+            result.append(videos_result)
+    return result
+
+
