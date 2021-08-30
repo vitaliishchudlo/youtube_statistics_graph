@@ -40,5 +40,3 @@ def get_formatted_data(unFormattedData):
             videos_result['link'] = f'https://www.youtube.com/watch?v={video["id"]}'
             result.append(videos_result)
     return result
-
-
