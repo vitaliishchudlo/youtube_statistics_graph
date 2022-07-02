@@ -35,7 +35,7 @@ def get_formatted_data(unFormattedData):
             videos_result['publishedAt'] = video['snippet']['publishedAt']
             videos_result['viewCount'] = video['statistics']['viewCount']
             videos_result['likeCount'] = video['statistics']['likeCount']
-            videos_result['dislikeCount'] = video['statistics']['dislikeCount']
+            #videos_result['dislikeCount'] = video['statistics']['dislikeCount']
             videos_result['commentCount'] = video['statistics']['commentCount']
             videos_result['link'] = f'https://www.youtube.com/watch?v={video["id"]}'
             result.append(videos_result)

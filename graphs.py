@@ -17,7 +17,7 @@ def show_statistic_graph(data, choice, channel_name, channel_id):
     for dic in data:
         dic['viewCount'] = int(dic['viewCount'])
         dic['likeCount'] = int(dic['likeCount'])
-        dic['dislikeCount'] = int(dic['dislikeCount'])
+        #dic['dislikeCount'] = int(dic['dislikeCount'])
         dic['commentCount'] = int(dic['commentCount'])
 
     # Сортування словників в списку, за певним значенням(коменти, лайки, діз)
