@@ -16,7 +16,16 @@
   $ . venv/bin/activate
   $ python3 -m pip install -r requirements.txt
 ```
-3. Run the script
+3. **For the fix problem:**
+
+_"UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure."_
+
+**Enter:**
+```
+  $ sudo apt-get install python3-tk
+```
+
+4. Run the script
 ```
   $ python3 app.py
 ```
