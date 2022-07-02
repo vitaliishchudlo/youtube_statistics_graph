@@ -13,23 +13,27 @@ def app(channel_name, channel_id):
     formatted_data_for_graphs = get_formatted_data(list_of_videos_statistic)
 
     def menu_graphs():
-        menu_choice = int(input('1 - Views\n2 - Likes\n3 - Comments\n4 - Exit\n> '))
-        if menu_choice == 1:
-            menu_choice = 'viewCount'
-            show_statistic_graph(formatted_data_for_graphs, menu_choice, channel_name, channel_id)
-            menu_graphs()
-        elif menu_choice == 2:
-            menu_choice = 'likeCount'
-            show_statistic_graph(formatted_data_for_graphs, menu_choice, channel_name, channel_id)
-            menu_graphs()
-        elif menu_choice == 3:
-            menu_choice = 'commentCount'
-            show_statistic_graph(formatted_data_for_graphs, menu_choice, channel_name, channel_id)
-            menu_graphs()
-        elif menu_choice == 4 or menu_choice == 'exit' or menu_choice == 'Exit':
-            os.system('exit')
-        else:
-            print('Try to enter the correct value\n\n\n')
+        try:
+            menu_choice = int(input('\n1 - Views\n2 - Likes\n3 - Comments\n4 - Exit\n> '))
+
+            if menu_choice == 1:
+                menu_choice = 'viewCount'
+                show_statistic_graph(formatted_data_for_graphs, menu_choice, channel_name, channel_id)
+                menu_graphs()
+            elif menu_choice == 2:
+                menu_choice = 'likeCount'
+                show_statistic_graph(formatted_data_for_graphs, menu_choice, channel_name, channel_id)
+                menu_graphs()
+            elif menu_choice == 3:
+                menu_choice = 'commentCount'
+                show_statistic_graph(formatted_data_for_graphs, menu_choice, channel_name, channel_id)
+                menu_graphs()
+            elif menu_choice == 4 or menu_choice == 'exit' or menu_choice == 'Exit':
+                os.system('exit')
+            else:
+                print('Try to enter the correct value\n\n\n')
+                menu_graphs()
+        except Exception:
             menu_graphs()
 
     menu_graphs()
