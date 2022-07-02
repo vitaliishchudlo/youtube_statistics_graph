@@ -7,17 +7,22 @@ from config import API_KEY
 youtube = build('youtube', 'v3', developerKey=API_KEY)
 
 
-def getChannelId(channel_name):
-    request = youtube.channels().list(
-        part='snippet, contentDetails, statistics',
-        forUsername=channel_name
-    )
+def getChannelId(channel_name, id=None):
+    request = None
+    if id:
+        request = youtube.channels().list(
+            part='snippet, contentDetails, statistics',
+            id=channel_name
+        )
+    if not id:
+        request = youtube.channels().list(
+            part='snippet, contentDetails, statistics',
+            forUsername=channel_name
+        )
     response = request.execute()
     try:
-        channel = response['items']
-        for info in channel:
-            channel_id = info['id']
-            return channel_id
+        channel = response['items'][0]
+        return channel['id']
     except Exception as err:
         return False
 

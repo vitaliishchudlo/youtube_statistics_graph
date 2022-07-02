@@ -1,16 +1,10 @@
 import os
 
+import requests
+
 from data_processing import get_list_id_videos, get_formatted_data
 from graphs import show_statistic_graph
 from youtubeAPI import getChannelId, getVideosStatistic
-
-
-def get_youtube_channel_name():
-    channel_name = input('Enter the name of the Youtube channel from which you want to get info.\n'
-                         'Or PRESS ENTER to choose the default - "FootballTVUA"\n> ')
-    if len(channel_name) == 0:
-        channel_name = 'FootballTVUA'
-    return channel_name
 
 
 def app(channel_name, channel_id):
@@ -41,14 +35,55 @@ def app(channel_name, channel_id):
     menu_graphs()
 
 
+def get_user_input():
+    user_input = input(
+        '\nEnter the ID or NAME or LINK on your YouTube channel from which you want to visualize statistics\n'
+        'You can press Enter to apply the default YouTube channel - DudeGang\n> ')
+    if len(user_input) == 0:
+        user_input = 'https://www.youtube.com/channel/UC6NmCNbRV8pwEwpcsUNpWhw'
+    return user_input
+
+
+def get_channel_id_from_channel_page(channel_link):
+    try:
+        response = requests.get(channel_link).text
+        link_start = response.find('href="https://www.youtube.com/channel/')
+        channel_url = response[link_start:link_start + 100].split('"')[1]
+        channel_id = channel_url.split('/')[-1]
+        return channel_id
+    except Exception:
+        return False
+
+
+def process_user_input(user_input):
+    if 'https://www.youtube.com/channel/' in user_input:
+        channel_id = user_input.split('/')[-1]
+        return channel_id
+
+    if 'https://www.youtube.com/c/' in user_input:
+        channel_id = get_channel_id_from_channel_page(user_input)
+        if channel_id: return channel_id
+
+    channel_id = getChannelId(user_input)
+    if channel_id: return channel_id
+
+    channel_id = getChannelId(user_input, id=True)
+    if channel_id: return channel_id
+
+    target_link = 'https://www.youtube.com/c/' + user_input
+    channel_id = get_channel_id_from_channel_page(target_link)
+    if channel_id: return channel_id
+
+    return False
+
+
 def start():
-    channel_name = get_youtube_channel_name()
-    channel_id = getChannelId(channel_name)
+    user_input = get_user_input()
+    channel_id = process_user_input(user_input)
     if not channel_id:
         print('Error. Can`t find this youtube channel.\n')
         start()
-    else:
-        app(channel_name, channel_id)
+    app(user_input, channel_id)
 
 
 if __name__ == '__main__':
