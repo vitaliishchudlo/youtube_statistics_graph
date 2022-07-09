@@ -27,7 +27,7 @@ def getChannelId(channel_name, id=None):
         return False
 
 
-def searchVideosIdByIdChannel(channel_id, published_after, published_before, page_token=None, max_results=50):
+def searchVideosIdByChannelId(channel_id, published_after, published_before, page_token=None, max_results=50):
     request = youtube.search().list(
         part='id',
         type='video',
@@ -57,3 +57,15 @@ def getVideosStatistic(list_of_id_videos):  # takes list with video ID`s
         start_id += 50
         stop_id += 50
     return result
+
+
+def getChannelNameByChannelId(channel_id):
+    request = youtube.channels().list(
+        part='snippet, contentDetails, statistics',
+        id=channel_id
+    )
+    response = request.execute()
+    try:
+        return response['items'][0]['snippet']['title']
+    except Exception:
+        return False

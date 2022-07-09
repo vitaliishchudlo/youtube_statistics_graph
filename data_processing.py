@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from youtubeAPI import searchVideosIdByIdChannel
+from youtubeAPI import searchVideosIdByChannelId
 
 
 def get_list_id_videos(channel_id):
@@ -10,17 +10,16 @@ def get_list_id_videos(channel_id):
     # Adding the standard in time that requires YoutubeAPI
     date_from = date_from.isoformat('T') + 'Z'
     date_end = date_end.replace(hour=23, minute=59, second=59).isoformat('T') + 'Z'
-    response = searchVideosIdByIdChannel(channel_id, date_from, date_end)
+    response = searchVideosIdByChannelId(channel_id, date_from, date_end)
     list_with_all_id_videos = []
 
     def extract_id_videos(text_for_extract):
         for video in text_for_extract['items']:
             list_with_all_id_videos.append(video['id']['videoId'])
-
     try:
         while response['nextPageToken']:
             extract_id_videos(response)
-            response = searchVideosIdByIdChannel(channel_id, date_from, date_end, page_token=response['nextPageToken'])
+            response = searchVideosIdByChannelId(channel_id, date_from, date_end, page_token=response['nextPageToken'])
     except Exception:
         extract_id_videos(response)
     return list_with_all_id_videos

@@ -4,7 +4,7 @@ import requests
 
 from data_processing import get_list_id_videos, get_formatted_data
 from graphs import show_statistic_graph
-from youtubeAPI import getChannelId, getVideosStatistic
+from youtubeAPI import getChannelId, getVideosStatistic, getChannelNameByChannelId
 
 
 def app(channel_name, channel_id):
@@ -32,10 +32,8 @@ def app(channel_name, channel_id):
                 os.system('exit')
             else:
                 print('Try to enter the correct value\n\n\n')
-                menu_graphs()
         except Exception:
             menu_graphs()
-
     menu_graphs()
 
 
@@ -87,7 +85,10 @@ def start():
     if not channel_id:
         print('Error. Can`t find this youtube channel.\n')
         start()
-    app(user_input, channel_id)
+    channel_name = getChannelNameByChannelId(channel_id)
+    if not channel_name:
+        channel_name = 'Error 404'
+    app(channel_name, channel_id)
 
 
 if __name__ == '__main__':
