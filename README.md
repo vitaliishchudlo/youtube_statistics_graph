@@ -1,3 +1,9 @@
+Tasks to improve the readme:
+
+1. Add the information about .env 
+2. About the project
+3. Rename the project...
+
 # Introduction
 ### Media Group Ukraine - test task
 
