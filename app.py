@@ -66,6 +66,11 @@ def process_user_input(user_input):
         channel_id = get_channel_id_from_channel_page(user_input)
         if channel_id: return channel_id
 
+
+    if 'https://www.youtube.com/' in user_input:
+        channel_id = get_channel_id_from_channel_page(user_input)
+        if channel_id: return channel_id
+
     channel_id = getChannelId(user_input)
     if channel_id: return channel_id
 
@@ -87,7 +92,7 @@ def start():
         start()
     channel_name = getChannelNameByChannelId(channel_id)
     if not channel_name:
-        channel_name = 'Error 404'
+        channel_name = 'Error404'
     app(channel_name, channel_id)
 
 
