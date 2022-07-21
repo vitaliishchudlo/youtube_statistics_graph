@@ -28,6 +28,10 @@ def getChannelId(channel_name, id=None):
 
 
 def searchVideosIdByChannelId(channel_id, published_after, published_before, page_token=None, max_results=50):
+    print(published_after)
+    print(type(published_after))
+    print(published_before)
+    print(type(published_before))
     request = youtube.search().list(
         part='id',
         type='video',

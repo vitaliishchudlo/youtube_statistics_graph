@@ -16,6 +16,7 @@ def get_list_id_videos(channel_id):
     def extract_id_videos(text_for_extract):
         for video in text_for_extract['items']:
             list_with_all_id_videos.append(video['id']['videoId'])
+
     try:
         while response['nextPageToken']:
             extract_id_videos(response)
