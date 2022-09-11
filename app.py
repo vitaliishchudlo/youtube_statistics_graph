@@ -87,7 +87,6 @@ def process_user_input(user_input):
 def start():
     user_input = get_user_input()
     channel_id = process_user_input(user_input)
-    print(channel_id)
     if not channel_id:
         print('Error. Can`t find this youtube channel.\n')
         start()
