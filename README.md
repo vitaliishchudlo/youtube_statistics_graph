@@ -1,9 +1,17 @@
-# Media Group Ukraine - test task
-### This is a test task for Media Group Ukraine company, for the position of Data Engineer.
-### The main purpose of the script was - getting statistics (count of views, likes, dislikes, comments), from the specified YouTube channel (default - FootballTVUA), from each video for the period from the first to the last day of the last month. Use this statistics to graph. To get statistics - use YouTube API.
+Tasks to improve the readme:
 
-## How to start script:
+1. Add the information about .env 
+2. About the project
+3. Rename the project...
 
+# Introduction
+### Media Group Ukraine - test task
+
+This is a test task for Media Group Ukraine company, for the position of **Python Data Engineer**.
+
+The main purpose of the script was - getting statistics (count of views, likes, dislikes, comments), from the specified YouTube channel, from each video for the period from the first to the last day of the last month. Use this statistics to graph. To get statistics - use YouTube API.
+___
+# How to run the script:
 1. Clone the project from github and change directory into project.
 ```
   $ git clone https://github.com/vitaliishchudlo/mediagroupukraine_test_task.git
