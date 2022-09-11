@@ -39,8 +39,8 @@ def app(channel_name, channel_id):
 
 def get_user_input():
     user_input = input(
-        '\nEnter the ID or NAME or LINK on your YouTube channel from which you want to visualize statistics\n'
-        'You can press Enter to apply the default YouTube channel - DudeGang\n> ')
+        '\nEnter the ID or NAME or LINK on your YouTube channel from which you want to visualize statistics.\n'
+        'You can press "Enter" to apply the default YouTube channel - DudeGang\n> ')
     if len(user_input) == 0:
         user_input = 'https://www.youtube.com/channel/UC6NmCNbRV8pwEwpcsUNpWhw'
     return user_input
