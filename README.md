@@ -1,21 +1,22 @@
-Tasks to improve the readme:
+# **Introduction**
+## YouTube Statistics Graph
 
-1. Add the information about .env 
-2. About the project
-3. Rename the project...
+The idea of this script was laid in a test task. The test task was given to me by the Ukrainian IT company - *Media Group Ukraine*, for the position of **Python Data Engineer**.
 
-# Introduction
-### Media Group Ukraine - test task
+## Main aim
 
-This is a test task for Media Group Ukraine company, for the position of **Python Data Engineer**.
+- The main purpose of the script was - getting statistics (count of views, likes, dislikes, comments);
+- The YouTube channel is indicated by the user himself (Name, ID, link);
+- Data is taken from each video on the channel from the first to the last day of the previous month;
+- The YouTube API is used to retrieve data;
+- The result is displayed on the graphs.
 
-The main purpose of the script was - getting statistics (count of views, likes, dislikes, comments), from the specified YouTube channel, from each video for the period from the first to the last day of the last month. Use this statistics to graph. To get statistics - use YouTube API.
-___
-# How to run the script:
-1. Clone the project from github and change directory into project.
+# **How to run the script:**
+1. Clone the project from GitHub and change directory into project.
+>
 ```
-  $ git clone https://github.com/vitaliishchudlo/mediagroupukraine_test_task.git
-  $ cd mediagroupukraine_test_task/
+  $ git clone https://github.com/vitaliishchudlo/youtube_statistics_graph.git
+  $ cd youtube_statistics_graph/
 ```
 
 2. Create & active virtual environment and install all the necessary packages.
@@ -24,16 +25,17 @@ ___
   $ . venv/bin/activate
   $ python3 -m pip install -r requirements.txt
 ```
-3. **For the fix problem:**
+3. Run the script
+```
+  $ python3 app.py
+```
+____
+
+### **If the following error occurs:**
 
 _"UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure."_
 
-**Enter:**
 ```
   $ sudo apt-get install python3-tk
 ```
 
-4. Run the script
-```
-  $ python3 app.py
-```
