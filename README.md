@@ -12,20 +12,20 @@ The idea of this script was laid in a test task. The test task was given to me b
 - The result is displayed on the graphs.
 
 # **How to run the script:**
-1. Clone the project from GitHub and change directory into project.
+1. Clone the project from GitHub and change directory into project:
 >
 ```
   $ git clone https://github.com/vitaliishchudlo/youtube_statistics_graph.git
   $ cd youtube_statistics_graph/
 ```
 
-2. Create & active virtual environment and install all the necessary packages.
+2. Create & active virtual environment and install all the necessary packages:
 ```
   $ python3 -m venv venv
   $ . venv/bin/activate
   $ python3 -m pip install -r requirements.txt
 ```
-3. Run the script
+3. Run the script:
 ```
   $ python3 app.py
 ```
